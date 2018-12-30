@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>AnimeApp</title>
+</head>
+    <style>
+    #boxes{
+  width:80%;
+  margin:auto;
+  text-align: center;
+}
+
+#btns{
+  padding:20px;
+  background:#f4f4f4;
+  margin-bottom:20px;
+}
+
+#btns button{
+  background:#fff;
+  padding:5px 10px;
+  border:0;
+}
+
+#btns .fa{
+  font-size:30px;
+}
+
+#btns .fa-play-circle{
+  color:green;
+}
+
+#btns .fa-pause-circle{
+  color:red;
+}
+
+.box{
+  position: relative;
+  width:100px;
+  height: 100px;
+  margin:4px;
+  display:inline-block;
+}
+
+.red{background-color:red}
+.blue{background-color:blue}
+.green{background-color:green}
+.yellow{background-color:yellow}
+    
+    </style>
+<body>
+  <div id="boxes">
+    <div id="btns">
+      <button class="play"><i class="fa fa-play-circle"></i></button>
+      <button class="pause"><i class="fa fa-pause-circle"></i></button>
+    </div>
+    <div class="box red"></div>
+    <div class="box blue"></div>
+    <div class="box green"></div>
+    <div class="box yellow"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+  <script type="text/javascript">
+    /*anime({
+  targets: 'div.box.red',
+  translateY: [
+    { value: 200, duration: 500 },
+    { value: 0, duration: 800 }
+    
+  ],
+  rotate: '1turn',
+  easing: 'easeInOutSine'
+});
+anime({
+	  targets: 'div.box.blue',
+	  translateY: [
+	    { value: 200, duration: 500, delay: 1000 },
+	    { value: 0, duration: 800 }
+	    
+	  ],
+	  rotate: '1turn',
+	  easing: 'easeInOutSine',
+	  delay : 1000
+	});
+anime({
+	  targets: 'div.box.green',
+	  translateY: [
+	    { value: 200, duration: 500, delay: 2000 },               // 2000 deplay 2 sec
+	    { value: 0, duration: 800 }
+	    
+	  ],
+	  rotate: '1turn',
+	  easing: 'easeInOutQuart',
+	  delay : 2000                          // will delay 2000 2 sec from
+	});*/
+
+var playPause = anime({
+  targets: 'div.box',
+  translateY: [
+    { value: 200, duration: 500 },
+    { value: 0, duration: 800 }
+  ],
+  rotate:{
+    value: '1turn',
+    easing: 'easeInOutSine'
+  },
+  delay: function(el, i, l){ return i * 1000},
+  autoplay:false,
+  loop:true
+});
+
+document.querySelector('#boxes .play').onclick = playPause.play;
+document.querySelector('#boxes .pause').onclick = playPause.pause;
+    
+    </script>
+    
+</body>
+</html>
